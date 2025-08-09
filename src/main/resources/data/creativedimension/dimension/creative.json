@@ -1,0 +1,14 @@
+{
+  "type": "creativedimension:creative",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "layers": [
+        {"height": 1, "block": "minecraft:bedrock"},
+        {"height": 254, "block": "minecraft:dirt"},
+        {"height": 1, "block": "minecraft:grass_block"}
+      ],
+      "structure_overrides": []
+    }
+  }
+}
