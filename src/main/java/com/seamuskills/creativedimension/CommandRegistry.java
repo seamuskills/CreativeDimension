@@ -15,5 +15,6 @@ public class CommandRegistry {
         CommandBuildContext context = event.getBuildContext();
 
         CreativeSwapCommand.register(dispatcher, context);
+        NightVisCommand.register(dispatcher, context);
     }
 }
