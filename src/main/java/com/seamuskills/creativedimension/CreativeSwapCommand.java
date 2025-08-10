@@ -58,6 +58,8 @@ public class CreativeSwapCommand {
 
             player.getFoodData().readAdditionalSaveData(player.getData(ModDataAttachments.SURVIVAL_HUNGER));
 
+            player.removeAllEffects();
+
             for (MobEffectInstance effect : player.getData(ModDataAttachments.SURVIVAL_EFFECTS)){
                 player.addEffect(effect);
             }
