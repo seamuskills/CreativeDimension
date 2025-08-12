@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.dimension.DimensionType;
@@ -13,6 +14,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.EntityTravelToDimensionEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.MobSpawnEvent;
@@ -40,6 +42,7 @@ public class Creativedimension {
         NeoForge.EVENT_BUS.addListener(Creativedimension::onSetSpawn);
         NeoForge.EVENT_BUS.addListener(Creativedimension::onClone);
         NeoForge.EVENT_BUS.addListener(Creativedimension::onPlayerDeath);
+        NeoForge.EVENT_BUS.addListener(Creativedimension::onDimensionChange);
 
         ATTACHMENT_TYPES.register(bus);
     }
@@ -76,6 +79,12 @@ public class Creativedimension {
                 event.setCanceled(true);
                 player.teleportTo(player.getX(), 1, player.getZ());
             }
+        }
+    }
+
+    public static void onDimensionChange(EntityTravelToDimensionEvent event){
+        if (event.getEntity() instanceof ServerPlayer && event.getEntity().level().dimension() == CREATIVE_DIMENSION){
+            event.setCanceled(true);
         }
     }
 }

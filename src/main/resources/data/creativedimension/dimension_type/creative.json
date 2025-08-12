@@ -7,7 +7,7 @@
   "ambient_light": 1,
   "fixed_time": 6000,
   "infiniburn": "#minecraft:infiniburn_overworld",
-  "effects": "minecraft:end",
+  "effects": "minecraft:overworld",
   "piglin_safe": true,
   "bed_works": true,
   "respawn_anchor_works": true,
